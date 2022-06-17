@@ -1,0 +1,70 @@
+<style>
+ .imagen{
+  width: 50px;
+  height: 50px;
+}
+</style>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+            <form action="/estudiantes/add" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" name="nombre" 
+                    class="form-control" placeholder="Nombres">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="apellido" 
+                    class="form-control" placeholder="Apellidos">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="carrera" 
+                    class="form-control" placeholder="Carrera Profesional">
+                </div> 
+                <div class="form-group">
+                    <input type="text" name="edad" 
+                    class="form-control" placeholder="Edad">
+                </div>                
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+                        <label for="inputGroupFile01" class="custom-file-label">Adjuntar Foto</label>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Guardar Estudiante</button>
+            </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Carrera</th>
+                    <th>Edad</th>
+                    <th>Foto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each estd}}
+                <tr>
+                    <td>{{nombre}}</td>
+                    <td>{{apellido}}</td>
+                    <td>{{carrera}}</td>
+                    <td>{{edad}}</td>
+                    <td>
+                        <img src="{{imageURL}}" class="imagen"/>
+                    </td>
+                    <td>
+                        <a href="{{imageURL}}" target="_blank" class="btn btn-success">View</a>
+                        <a href="/estudiantes/delete/{{_id}}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </div>
+    </table>
+</div>
